@@ -1,0 +1,13 @@
+{
+  "test": [
+    {
+      "fileName": "my-project",
+      "children": [
+        {
+          "name": "images",
+          "type": 
+        }
+      ]
+    }
+  ]
+}

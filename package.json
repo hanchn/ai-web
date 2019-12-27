@@ -1,0 +1,11 @@
+{
+  "name": "tag",
+  "version": "1.0.0",
+  "description": "1. 基础结构",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
