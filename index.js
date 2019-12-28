@@ -119,8 +119,18 @@ const getDirPath = ({ fileName = "", extension = "", fileXML = [] }) => {
   return false;
 };
 
+const readFileContext = ({ path = "", encoding = "utf-8" }, fs_) =>
+  fs_.readFileSync(__dirname + "\\" + path, encoding);
+
+const writeFileContext = ({ path = "", context = ["Hello World !"] }, fs_) =>
+  fs_.writeFileSync(__dirname + "\\" + path, context);
+
+writeFileContext({ path: "test.html", context: ["Hello World !"] }, fs);
+
 module.exports = {
   handleMk,
   makeFiles,
-  resultDir
+  resultDir,
+  readFileContext,
+  writeFileContext
 };
