@@ -81,7 +81,7 @@ const makeFiles = ({ path = "", fileXML = [] }, fs_) => {
 
 /**
  * resultDir 获取当前目录结构
- *   { path, fileXML } 参数一
+ *   { path} 参数一
  *
  *     path 为文件创建的目录 如果不传递则默认为当前目录
  *
@@ -108,6 +108,15 @@ const resultDir = ({ path = "" }, fs_) => {
   return fileXML;
 };
 
+/**
+ * getDirPath 获取当前目录地址
+ *  { fileName = "", extension = "", fileXML = [] } 参数一
+ *
+ *     fileName 为文件名
+ *     extension 为拓展名
+ *     fileXML 当前的文件结构
+ */
+
 const getDirPath = ({ fileName = "", extension = "", fileXML = [] }) => {
   if (fileXML.length < 1) return false;
   let dir = "";
@@ -128,14 +137,6 @@ const getDirPath = ({ fileName = "", extension = "", fileXML = [] }) => {
   }
   return false;
 };
-
-const test = getDirPath({
-  fileName: "css",
-  extension: "css",
-  fileXML: resultDir({}, fs)
-});
-
-console.log(test);
 
 module.exports = {
   handleMk,
