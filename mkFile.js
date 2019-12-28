@@ -79,66 +79,9 @@ const makeFiles = ({ path = "", fileXML = [] }, fs_) => {
   }
 };
 
-/**
- * resultDir 获取当前目录结构
- *   { path, fileXML } 参数一
- *
- *     path 为文件创建的目录 如果不传递则默认为当前目录
- *
- *   fs 参数二 nodejs 原生文件流模块 如果不传递 则惰性创建 效率变差
- */
-
-const resultDir = ({ path = "" }, fs_) => {
-  const path_ = path == "" ? __dirname : __dirname + path;
-  let fileXML = [];
-  for (let [key, item] of Object.entries(fs.readdirSync(path_))) {
-    const fileName = item.split(".").shift();
-    const extension = item.split(".").length > 1 ? item.split(".").pop() : "";
-    fileXML = [
-      ...fileXML,
-      {
-        fileName,
-        extension,
-        children: extension
-          ? []
-          : resultDir({ path: path + "\\" + fileName }, fs_)
-      }
-    ];
-  }
-  return fileXML;
-};
-
-const getDirPath = ({ fileName = "", extension = "", fileXML = [] }) => {
-  if (fileXML.length < 1) return false;
-  let dir = "";
-  for (let [key, item] of Object.entries(fileXML)) {
-    dir = item.fileName + (item.extension == "" ? "" : "." + item.extension);
-    if (item.fileName == fileName && item.extension == extension) {
-      return dir;
-    } else if (item.children && item.children.length > 0) {
-      const childDir = getDirPath({
-        fileName,
-        extension,
-        fileXML: item.children
-      });
-      if (childDir) {
-        return dir + "\\" + childDir;
-      }
-    }
-  }
-  return false;
-};
-
-const test = getDirPath({
-  fileName: "css",
-  extension: "css",
-  fileXML: resultDir({}, fs)
-});
-
-console.log(test);
+// makeFiles({ fileXML: createData }, fs);
 
 module.exports = {
   handleMk,
-  makeFiles,
-  resultDir
+  makeFiles
 };
