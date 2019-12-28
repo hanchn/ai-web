@@ -1,23 +1,4 @@
 const fs = require("fs");
-const path = require("path");
-const createData = [
-  {
-    fileName: "test",
-    extension: "",
-    children: [
-      {
-        fileName: "index",
-        extension: "html"
-      },
-      {
-        fileName: "images"
-      },
-      {
-        fileName: "css"
-      }
-    ]
-  }
-];
 
 /**
  * handleMk 创建文件夹和文件
